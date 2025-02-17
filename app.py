@@ -119,6 +119,39 @@ def main():
     # About Page
     elif choice == "About 📝":
         st.write("FoodieGenie is your personal dining assistant!")
+        st.subheader("Project Overview:")
+        st.write("""
+        FoodieGenie is an AI-powered chatbot designed to enhance the guest experience in a 5-star hotel. 
+        It handles dining orders, special requests, and provides general hotel information.
+        Built using Python, Natural Language Processing (NLP), and the Logistic Regression algorithm, 
+        FoodieGenie automates interactions to reduce response times and ensure 24/7 guest support. 
+        """)
+
+        st.header("Intents and Features 🛠️")
+        st.write("Below are the intents the chatbot currently supports:")
+        for intent in intents:
+            st.markdown(f"- **{intent['tags']}**: {intent.get('description', 'No description provided.')}")
+
+        st.header("Key Achievements 🏆")
+        st.subheader("1. Guest Query Handling:")
+        st.write("FoodieGenie effectively processes user queries related to hotel services and dining.")
+        st.subheader("2. NLP Integration 🤖:")
+        st.write("Utilizes NLP techniques to understand guest input and generate accurate responses.")
+        st.subheader("3. Dining and Special Requests Automation 🍴:")
+        st.write("Handles dining orders and special guest requests efficiently.")
+        st.subheader("4. Streamlit Web Interface 🌐:")
+        st.write("Provides an interactive interface for seamless guest interaction.")
+
+        st.header("Future Scope 🔮")
+        st.subheader("1. Advanced Intent Identification 🔍:")
+        st.write("Improving intent recognition to better understand complex user queries.")
+        st.subheader("2. Emotion and Sentiment Analysis 😃😞:")
+        st.write("Integrating emotion detection to provide empathetic responses to guests.")
+        st.subheader("3. Multi-Language Support 🌍:")
+        st.write("Adding support for multiple languages to cater to diverse guests.")
+        st.subheader("4. Integration with Hotel Management Systems 🏨:")
+        st.write("Connecting with existing hotel systems to automate service delivery.")
+
 
 if __name__ == '__main__':
     main()
