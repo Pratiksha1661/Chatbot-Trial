@@ -129,7 +129,7 @@ def main():
 
         st.header("Intents and Features 🛠️")
         st.write("Below are the intents the chatbot currently supports:")
-        for intent in intents:
+        for intent in intents['intents']:
             st.markdown(f"- **{intent['tags']}**: {intent.get('description', 'No description provided.')}")
 
         st.header("Key Achievements 🏆")
