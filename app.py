@@ -127,11 +127,6 @@ def main():
         FoodieGenie automates interactions to reduce response times and ensure 24/7 guest support. 
         """)
 
-        st.header("Intents and Features 🛠️")
-        st.write("Below are the intents the chatbot currently supports:")
-        for intent in intents['intents']:
-            st.markdown(f"- **{intent['tags']}**: {intent.get('description', 'No description provided.')}")
-
         st.header("Key Achievements 🏆")
         st.subheader("1. Guest Query Handling:")
         st.write("FoodieGenie effectively processes user queries related to hotel services and dining.")
