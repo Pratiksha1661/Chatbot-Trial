@@ -1,48 +1,88 @@
-import streamlit as st
-import pandas as pd
+import os
+import csv
+import datetime
 import nltk
-from nltk.tokenize import word_tokenize
+import ssl
+import pickle
+import streamlit as st
 import random
+import json
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+import time
 
-# Load the dataset
-@st.cache_data
-def load_data():
-    return pd.read_csv("foodiegenie_dataset.csv")
+# SSL context to avoid download issues
+ssl._create_default_https_context = ssl._create_unverified_context
+nltk.data.path.append(os.path.abspath("nltk_data"))
+nltk.download("punkt")
 
-df = load_data()
+# Load intents files
+with open('intents.json', 'r', encoding='utf-8') as file:
+    intents_english = json.load(file)
 
-# Function to get dish recommendations based on query
-def get_dish_recommendation(query, language):
-    query_tokens = word_tokenize(query.lower())
-
-    for _, row in df.iterrows():
-        if any(token in row['Dish Name'].lower() for token in query_tokens):
-            if language == "Marathi":
-                return f"**{row['Dish Name']}**: {row['Description (Marathi)']}"
-            else:
-                return f"**{row['Dish Name']}**: {row['Description (English)']}"
-
-    return "क्षमस्व! मला हा पदार्थ माहित नाही. | Sorry! I don't know this dish."
-
-# Streamlit UI
-st.set_page_config(page_title="FoodieGenie 🤖", layout="centered")
-
-st.title("🍽️ FoodieGenie 🤖: Your Wish ✨, Our Dish")
-st.write("Welcome to **FoodieGenie**, your personalized Maharashtrian cuisine assistant!")
+with open('intents_marathi.json', 'r', encoding='utf-8') as file:
+    intents_marathi = json.load(file)
 
 # Language selection
-language = st.radio("Select Language | भाषा निवडा", ["English", "Marathi"])
+def get_intents(lang):
+    return intents_marathi if lang == "Marathi" else intents_english
 
-# User input
-user_query = st.text_input("Enter your query | आपली चौकशी टाइप करा", "")
+# Initialize vectorizers and models
+vectorizer_eng, vectorizer_mar = TfidfVectorizer(), TfidfVectorizer()
+clf_eng, clf_mar = LogisticRegression(max_iter=10000), LogisticRegression(max_iter=10000)
 
-# Process user query
-if st.button("Ask FoodieGenie!"):
-    if user_query:
-        response = get_dish_recommendation(user_query, language)
-        st.success(response)
+def train_model(intents, vectorizer, clf):
+    tags, patterns = [], []
+    for intent in intents:
+        for pattern in intent['patterns']:
+            tags.append(intent['tags'])
+            patterns.append(pattern)
+    x = vectorizer.fit_transform(patterns)
+    y = tags
+    clf.fit(x, y)
+
+def chatbot_response(input_text, lang):
+    intents = get_intents(lang)
+    vectorizer = vectorizer_mar if lang == "Marathi" else vectorizer_eng
+    clf = clf_mar if lang == "Marathi" else clf_eng
+    try:
+        input_text = vectorizer.transform([input_text])
+        tag = clf.predict(input_text)[0]
+        for intent in intents:
+            if tag in intent['tags']:
+                return random.choice(intent['responses'])
+    except:
+        return "क्षमस्व, मी ते समजू शकलो नाही. कृपया पुन्हा सांगा." if lang == "Marathi" else "I'm sorry, I couldn't understand that. Could you please rephrase?"
+
+# Train both models
+train_model(intents_english, vectorizer_eng, clf_eng)
+train_model(intents_marathi, vectorizer_mar, clf_mar)
+
+# Streamlit UI
+def main():
+    st.title("FoodieGenie 🤖: Your Wish ✨, Our Dish 🍽️")
+    language = st.sidebar.radio("Select Language / भाषा निवडा", ("English", "Marathi"))
+    
+    st.subheader("Features of FoodieGenie 🛎️")
+    if language == "English":
+        st.write("- **Instant Dining Orders** 🍕\n- **Room Service Requests** 🛏️\n- **Personalized Recommendations** 🤖\n- **24/7 Availability** 🌙")
     else:
-        st.warning("Please enter a query! | कृपया चौकशी करा!")
+        st.write("- **त्वरित जेवणाची ऑर्डर** 🍕\n- **रूम सर्व्हिस विनंती** 🛏️\n- **वैयक्तिक शिफारसी** 🤖\n- **२४/७ उपलब्धता** 🌙")
+    
+    if st.button("Start Chatting with FoodieGenie 👨🏻‍🍳"):
+        st.write("नमस्कार! मी FoodieGenie आहे, तुमचा व्यक्तिगत सहाय्यक. मी कशाने मदत करू?" if language == "Marathi" else "Hello! I am FoodieGenie, your personal assistant. How can I help you today?")
+    
+    st.image('foodie.png', caption="FoodieGenie - Your Personal Assistant")
+    
+    user_input = st.text_input("You 🗣️" if language == "English" else "तुम्ही 🗣️")
+    
+    if user_input:
+        with st.empty():
+            st.write("FoodieGenie is typing... 📝" if language == "English" else "FoodieGenie टाईप करत आहे... 📝")
+            time.sleep(2)
+        
+        response = chatbot_response(user_input, language)
+        st.text_area("FoodieGenie:", value=response, height=120)
 
-# Footer
-st.write("🤖 Powered by AI | Created for Maharashtrian 5-star hotels")
+if __name__ == '__main__':
+    main()
