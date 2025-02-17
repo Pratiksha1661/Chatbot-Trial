@@ -38,7 +38,7 @@ def train_model(intents, vectorizer, clf):
     for intent in intents['intents']:
         for pattern in intent['patterns']:
             patterns.append(pattern)
-            tags.append(intent['tag'])
+            tags.append(intent['tags'])
     
     x = vectorizer.fit_transform(patterns)
     clf.fit(x, tags)
@@ -54,7 +54,7 @@ def chatbot_response(input_text, lang):
         tag = clf.predict(input_text_vector)[0]
         
         for intent in intents['intents']:
-            if intent['tag'] == tag:
+            if intent['tags'] == tag:
                 return random.choice(intent['responses'])
     except:
         return "क्षमस्व, मी समजू शकलो नाही. कृपया पुन्हा सांगा." if lang == "Marathi" else "Sorry, I couldn't understand. Can you please rephrase?"
