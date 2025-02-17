@@ -1,4 +1,5 @@
-[
+{
+  "intents": [
     {
       "tags": "greeting",
       "patterns": ["Hello", "Hi", "Good evening", "Hey", "How are you?", "Good morning", "Good afternoon"],
@@ -95,3 +96,4 @@
         ]
     }
 ]
+}
