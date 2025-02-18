@@ -2,15 +2,46 @@
   "intents": [
     {
       "tags": "greeting",
-      "patterns": ["Hello", "Hi", "Good evening", "Hey", "How are you?", "Good morning", "Good afternoon"],
-      "responses": ["Hello, I am FoodieGenie! How can I assist you with your food order today?","Hello! I'm FoodieGenie, your personal dining assistant. What can I do for you today?",
-"Hi there! Need help with your food order or any special requests? I'm here for you!","Hey! I'm FoodieGenie, ready to make your stay delightful. How can I assist you today?"]
+"patterns": [
+    "Hello", "Hi", "Good evening", "Hey", "How are you?", "Good morning", "Good afternoon", 
+    "Hi there", "Hey there", "Greetings", "What's up?", "Howdy", "Yo", "Hey there, FoodieGenie!", 
+    "Good day", "How’s it going?", "Hello FoodieGenie", "Hi FoodieGenie", "Hey FoodieGenie"
+],
+"responses": [
+    "Hello, I am FoodieGenie! How can I assist you with your food order today?",
+    "Hello! I'm FoodieGenie, your personal dining assistant. What can I do for you today?",
+    "Hi there! Need help with your food order or any special requests? I'm here for you!",
+    "Hey! I'm FoodieGenie, ready to make your stay delightful. How can I assist you today?",
+    "Greetings! What can I get for you today? Food or something special?",
+    "Hey there! How can I make your day tastier today?",
+    "Hi! I’m here to assist you with all your food needs. What are you craving today?",
+    "Good day! Let me know if you need help with food or anything else.",
+    "Hello! I’m FoodieGenie, here to help with your food orders. What’s your hunger level today?",
+    "How’s it going? Let me know what food you’d like to enjoy today!"
+]
+
     },
     {
       "tags": "order_food",
-      "patterns": ["I want to order food", "Can I see the menu?", "Give me something to eat","I'm feeling hungry","Order"],
-      "responses": ["Sure! What type of food would you like to order today? We have Maharashtrian, Healthy, Junk food, and Sweet dishes.","Sure! What type of food are you craving?",
-                     "What would you like to have? We offer a variety of dishes." ]
+"patterns": [
+    "I want to order food", "Can I see the menu?", "Give me something to eat", "I'm feeling hungry", 
+    "Order", "I'm craving something", "What can I order?", "I need food", "I'm hungry, can I order?", 
+    "Order me some food", "What should I eat?", "I’m in the mood for food", "Can you suggest me something?", 
+    "Let’s order something", "What do you have to eat?", "I want food now", "Show me the food menu"
+],
+"responses": [
+    "Sure! What type of food would you like to order today? We have Maharashtrian, Healthy, Junk food, and Sweet dishes.",
+    "Sure! What type of food are you craving?",
+    "What would you like to have? We offer a variety of dishes.",
+    "I can help you with that! Do you want Maharashtrian, Healthy, Junk, or Sweet dishes?",
+    "We have a wide variety of options. Are you in the mood for something spicy or sweet?",
+    "Hungry, huh? Let's get you something delicious! What are you in the mood for?",
+    "I’ve got plenty of options for you. What are you craving today?",
+    "You must be hungry! Let’s find something tasty. What do you feel like having?",
+    "Ready to eat? Tell me what you want, and I’ll order it for you.",
+    "Looking for something delicious? I can show you the menu!"
+]
+
     },
     {
       "tags": "select_food",
@@ -39,22 +70,54 @@
     "You've selected {food_name}. Would you like to customize your order?",
     "Great choice! Your {food_name} is being prepared.",
     "Okay, {food_name} is added to your order. Any other requests?",
-    "Nice", "Great", "Wow"
+     "Great Choice"
 ]
 
     },
     {
       "tags": "special_request",
-      "patterns": ["Make it extra spicy", "No onions please", "I want gluten-free food","Make it less spicy","Make it sugar free"],
-      "responses": ["Got it! Your special request has been added.","Your request for customization has been noted.",
-                     "Sure, we’ll prepare it as per your request.","Done","Accepted"]
+"patterns": [
+    "Make it extra spicy", "No onions please", "I want gluten-free food", "Make it less spicy", 
+    "Make it sugar-free", "Can you make it vegetarian?", "No garlic, please", "Please make it mild", 
+    "Add extra cheese", "I want it extra crispy", "Can I have it without dairy?", "Please make it vegan", 
+    "No nuts in my dish", "Make it without tomatoes", "Can you add extra toppings?", "No salt please", 
+    "Can I have extra gravy?", "Please make it low fat", "Can you make it spicy?", "No pepper in it", 
+    "I want it without mushrooms", "Add some more spice"
+],
+"responses": [
+    "Got it! Your special request has been added.",
+    "Your request for customization has been noted.",
+    "Sure, we’ll prepare it as per your request.",
+    "Done",
+    "Accepted",
+    "We’ve made the changes as per your request!",
+    "All set! Your food will be prepared exactly how you like it.",
+    "Noted! Enjoy your customized order.",
+    "Your request has been added, and we’ll prepare it accordingly.",
+    "Customizations are in! Your dish will be made to perfection."
+]
+
     },
     {
       "tags": "confirm_order",
-      "patterns": ["Yes, confirm my order", "Place the order", "I’m ready to confirm","Confirm","Order now"],
-      "responses":["Your order is confirmed!",
-                     "Order placed successfully!",
-                     "Done! Expect your delicious food soon.","Order Confirmed Successfully !!"]
+"patterns": [
+    "Yes, confirm my order", "Place the order", "I’m ready to confirm", "Confirm", 
+    "Order now", "Proceed with my order", "Go ahead and place my order", 
+    "Confirm my food order", "Let’s confirm the order", "I’m ready to place my order",
+    "Place the food order now", "Confirm everything"
+],
+"responses": [
+    "Your order is confirmed!",
+    "Order placed successfully!",
+    "Done! Expect your delicious food soon.",
+    "Order Confirmed Successfully !!",
+    "Your order has been confirmed, sit tight, and your food is on its way!",
+    "Order successfully placed! We’re preparing your meal now.",
+    "It’s all set! Your order is on its way.",
+    "Your confirmation is in! Get ready for some delicious food.",
+    "Order confirmed! We’ll have it ready for you soon.",
+    "Great! Your order is now confirmed. Enjoy your meal soon!"
+]
     },
     {
       "tags": "feedback",
@@ -63,38 +126,74 @@
     },
     {
       "tags": "small_talk",
-      "patterns": ["Who are you?","What’s your name?","Tell me a joke","How’s the weather?"],
-      "responses": ["I’m FoodieGenie, your friendly assistant for all food-related needs!","I’m here to make your food ordering experience awesome.",
-        "Why don’t chefs trust each other? Because they keep too many secrets!","I’m not sure about the weather, but I can definitely help with your hunger!"]
+"patterns": [
+    "Who are you?", "What’s your name?", "Tell me a joke", "How’s the weather?", 
+    "What’s up?", "How are you?", "Tell me something funny", "Can you entertain me?", 
+    "What’s your favorite food?", "Do you have any hobbies?", "What’s your favorite color?", 
+    "Are you a human?", "What do you like to do?", "How’s life?", "What do you do all day?",
+    "What’s your favorite dish?", "Can you chat with me?", "What’s your mood today?"
+],
+"responses": [
+    "I’m FoodieGenie, your friendly assistant for all food-related needs!",
+    "I’m here to make your food ordering experience awesome.",
+    "Why don’t chefs trust each other? Because they keep too many secrets!",
+    "I’m not sure about the weather, but I can definitely help with your hunger!",
+    "I’m your food genie, ready to grant your culinary wishes!",
+    "Did you hear about the restaurant on the moon? Great food, no atmosphere!",
+    "I’m here to make your day more delicious, one bite at a time!",
+    "I’m your personal food assistant! Here to make your food journey delightful.",
+    "Here’s a fun one: Why did the tomato turn red? Because it saw the salad dressing!",
+    "Life is a journey, and I’m here to guide you to the tastiest destinations!",
+    "Not much, just waiting to help you with your cravings!",
+    "I’m made to serve you, and I always have a food-filled adventure ready!",
+    "My favorite food? Well, that’s a tough choice! I love anything that satisfies hunger.",
+    "I don’t have hobbies, but helping you order delicious food is my favorite thing to do!",
+    "I’m just a friendly assistant, here to help with all your food desires.",
+    "I may not have a favorite color, but I sure have a favorite flavor: anything tasty!"
+]
     },
     {
         "tags": "goodbye",
-        "patterns": [
-            "Bye",
-            "See you later",
-            "Goodbye",
-            "Take care",
-            "By","See you"
-        ],
-        "responses": [
-            "Goodbye",
-            "See you later",
-            "Take care","Bye","By","See you"
-        ]
+"patterns": [
+    "Bye", "See you later", "Goodbye", "Take care", "By", "See you", 
+    "Catch you later", "Goodbye for now", "Talk to you soon", "Have a great day", 
+    "I’ll miss you", "Take care, see you soon", "Farewell", "See you next time"
+],
+"responses": [
+    "Goodbye!",
+    "See you later!",
+    "Take care!",
+    "Bye! Have a great day!",
+    "By! Come back anytime!",
+    "See you! Stay awesome!",
+    "Catch you later! Don't forget to order something tasty!",
+    "Goodbye for now, looking forward to our next chat!",
+    "Talk to you soon! Enjoy your meal!",
+    "Have a wonderful day ahead, see you next time!",
+    "Take care! Hope you’re satisfied with your food!"
+]
+
     },
     {
         "tags": "thanks",
-        "patterns": [
-            "Thank you",
-            "Thanks",
-            "Thanks a lot",
-            "I appreciate it"
-        ],
-        "responses": [
-            "You're welcome",
-            "No problem",
-            "Glad I could help"
-        ]
+"patterns": [
+    "Thank you", "Thanks", "Thanks a lot", "I appreciate it", 
+    "Thank you so much", "Thanks a bunch", "Many thanks", "Thanks for your help",
+    "I'm grateful", "I really appreciate it", "Thanks a ton", "You're the best"
+],
+"responses": [
+    "You're welcome!",
+    "No problem!",
+    "Glad I could help!",
+    "It was my pleasure!",
+    "Happy to assist!",
+    "Anytime! I'm here for you!",
+    "You're most welcome!",
+    "It was nothing, happy to help!",
+    "Glad to be of service!",
+    "You're very welcome, enjoy your food!"
+]
+
     },
     {
         "tags": "health",
@@ -110,15 +209,26 @@
     },
     {
         "tags": "cooking",
-        "patterns": [
-            "Tell me about cooking",
-            "What's your favorite dish",
-            "Cooking tips for beginners"
-        ],
-        "responses": [
-            "Cooking is the art of preparing food, and it allows you to experiment with flavors and create delicious meals.",
-            "For beginners, start with simple recipes, use fresh ingredients, and don't be afraid to try new techniques."
-        ]
+"patterns": [
+    "Tell me about cooking", "What's your favorite dish?", "Cooking tips for beginners", 
+    "How do I start cooking?", "What are some easy recipes?", "Can you help me with cooking?", 
+    "I want to learn cooking", "What’s the best way to cook?", "How to become a good cook?", 
+    "Any cooking advice?", "What should I cook today?", "Give me some cooking ideas", 
+    "How do I cook like a pro?", "Can you share some cooking techniques?", "What's your cooking style?"
+],
+"responses": [
+    "Cooking is the art of preparing food, and it allows you to experiment with flavors and create delicious meals.",
+    "For beginners, start with simple recipes, use fresh ingredients, and don't be afraid to try new techniques.",
+    "Cooking is all about creativity! You can start by mastering basic techniques and gradually move to more complex dishes.",
+    "The best way to start is by experimenting with easy recipes and focusing on mastering one dish at a time.",
+    "If you’re new to cooking, I recommend starting with some comfort foods like pasta, scrambled eggs, or salads.",
+    "Cooking doesn't have to be difficult. Start with simple ingredients and focus on getting the basics right.",
+    "My favorite dish? It's a tough choice, but I love anything that combines fresh ingredients with bold flavors!",
+    "A great tip for beginners is to always have the right kitchen tools and never skip on seasoning. It makes a huge difference!",
+    "Don't worry about making mistakes in the kitchen. Every mistake is a chance to learn and improve your skills!",
+    "Cooking is about balance, so don’t forget to experiment with flavors, textures, and seasonings until it feels just right."
+]
+
     }
 ]
 }
