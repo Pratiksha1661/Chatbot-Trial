@@ -14,9 +14,34 @@
     },
     {
       "tags": "select_food",
-      "patterns": ["I want Vada Pav", "Give me Gulab Jamun", "Order Pizza", "I’ll have Sabudana Khichdi","Idli Dosa","VadaPav","Dosa","Order khichdi"],
-      "responses": ["You've selected {food_name}. Would you like to customize your order?","Great choice! Your {food_name} is being prepared.",
-                     "Okay, {food_name} is added to your order. Any other requests?","Nice","Great","Wow"]
+"patterns": [
+    "I want Vada Pav", "Give me Gulab Jamun", "Order Pizza", "I’ll have Sabudana Khichdi",
+    "Idli Dosa", "VadaPav", "Dosa", "Order khichdi", "I want Biryani", "Give me Butter Chicken", 
+    "Order Tandoori", "I’ll have Pav Bhaji", "Get me Samosas", "Order a Burger", 
+    "I want a Sandwich", "Give me Chole Bhature", "Order Pani Puri", 
+    "I’ll have Chaat", "Get me Kachori", "Order Pulao", "I want some Momos", 
+    "Give me a Wrap", "Order Falafel", "I’ll have a Burrito", "Get me Tacos", 
+    "Order Sushi", "I want some Ramen", "Give me Lasagna", "Order a Cheeseburger",
+    "I’ll have Mac and Cheese", "Get me a Salad", "Order Chicken Wings", 
+    "I want some Spring Rolls", "Give me a Hot Dog", "Order Paella", 
+    "I’ll have Dim Sum", "Get me Pancakes", "Order Waffles", "I want a Smoothie",
+    "Order Jalebi", "I want Rasgulla", "Give me Gajar Halwa", "Order Kulfi", 
+    "I’ll have Lassi", "Get me Kheer", "Order Malai Lassi", "I want a Chocolate Lava Cake", 
+    "Give me Ice Cream", "Order Brownies", "I want a Cheesecake", "Give me Pudding", 
+    "Order Gulab Jamun", "I’ll have Moong Dal Halwa", "Get me Barfi", "I want a Sizzling Brownie",
+    "Order Pani Puri with extra spice", "Give me a spicy Chaat", "I want some spicy Tandoori Wings", 
+    "Get me Masala Papad", "Order Spicy Samosas", "I’ll have Paneer Tikka", 
+    "Order a Chilli Paneer", "I want some Dhokla with spicy chutney", "Give me a Spicy Wrap", 
+    "Order Spicy Fries", "I’ll have Spicy Nachos", "Get me a Spicy Sandwich", "Order Spicy Chicken Wings",
+    "I want some Chole Tikki", "Give me a spicy Vada Pav"
+],
+"responses": [
+    "You've selected {food_name}. Would you like to customize your order?",
+    "Great choice! Your {food_name} is being prepared.",
+    "Okay, {food_name} is added to your order. Any other requests?",
+    "Nice", "Great", "Wow"
+]
+
     },
     {
       "tags": "special_request",
